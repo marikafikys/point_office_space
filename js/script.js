@@ -51,6 +51,16 @@ function animation() {
 	gsap.registerPlugin(ScrollTrigger);
 
 	function animSmall() {
+		gsap.to(".progressbar", {
+			width: "100%",
+			scrollTrigger: {
+				trigger: "body",
+				start: "top top",
+				end: "bottom bottom",
+				scrub: true,
+			},
+		});
+
 		const tlPromo = gsap.timeline({});
 		// на первых экранах лучше использовать .to вместо .from
 		tlPromo
@@ -298,9 +308,23 @@ function animation() {
 			},
 		});
 		tlPoint
-			.to(".point", {
+			.to("body", {
 				backgroundColor: "#000",
 			})
+			.to(
+				".plus-block__text",
+				{
+					color: "#fff",
+				},
+				"<"
+			)
+			.to(
+				".plus-block__title span:last-child",
+				{
+					color: "#fff",
+				},
+				"<"
+			)
 			.to(
 				".point__title",
 				{
@@ -375,7 +399,7 @@ function animation() {
 		animSmall();
 	});
 
-    // Переделать без дублирования кода
+	// Переделать без дублирования кода
 
 	// let end = "";
 	// let start = "";
